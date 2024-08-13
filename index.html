@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Form Validation</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+		* {
+			font-family: "Work Sans", sans-serif;
+		}
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFtMUZMrZVKFkSQqzjxIMYrdqnKKn-wp4BuQ&s");
+			background-size: cover;
+		}
+		#form {
+			width: 50%;
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			flex-direction: column;
+		  	margin: 0;
+		  	position: absolute;
+		  	top: 65%;
+		  	transform: translateY(-100%);
+		  	background-color: rgba(255,255,255,0.2);
+		  	padding: 4rem;
+		  	border-radius: 1rem;
+		}
+		#form input, button {
+			padding: 0.5rem;
+			margin: 0.2rem;
+		  	border-radius: 1rem;
+		  	border: 0;
+		}
+		button:active {
+			background-color: black;
+			color:  white;
+		}
+	</style>
+</head>
+<body>
+	<div id="form">
+	    <input type="text" placeholder="Your sweet name..." id="name">
+	    <input type="number" placeholder="Your age..." id="age">
+	    <input type="text" placeholder="Your phone number..." id="phnum">
+	    <input type="email" placeholder="Your email..." id="mail">
+	    <button onclick="validate()">SUBMIT</button>
+	</div>
+	<script type="text/javascript">
+
+		function validate(){
+			const name = document.getElementById ("name") . value.trim();
+            const age = document.getElementById("age").value.trim();
+            const num = document.getElementById ("phnum"). value. trim();
+            const mail = document.getElementById("mail").value.trim();
+
+			if(name === ""){
+				alert("Not a valid name");
+				return 0 ; 
+			}
+
+			if(age<=0){
+				alert("Age should be greater than 0 ");
+				return 0;
+			}
+
+			const phonePattern = /\d{10}$/;
+			if(!phonePattern.test(num)){
+				alert("Not a valid phone number");
+				return 0;
+			}
+
+			const mailPattern = /[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+			if(!mailPattern.test(mail)){
+				alert("Not a valid email");
+				return 0;
+			}	
+
+alert("Form submitted");
+
+		}
+
+	</script>
+</body>
+</html>
